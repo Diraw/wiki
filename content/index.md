@@ -25,6 +25,10 @@ title: index
 
 [[nginx]]
 
+# Debug
+
+[[wsl]]
+
 # 其他
 
 [[正则表达式]]

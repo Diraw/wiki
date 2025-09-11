@@ -77,13 +77,15 @@ Get-Process -Name myprocess | Stop-Process
 
 # 查找
 
+## 查找文件名
+
 ```powershell
 Get-ChildItem -Path . -Filter "*.yml" -Recurse
 ```
 
 - `Get-ChildItem`: PowerShell 中用于获取文件和目录的命令。
 - `-Path .`: 指定搜索的路径为当前目录（. 表示当前目录）。
-- `-Filter "*.yml"`: 使用过滤器来匹配文件名为 .yml 结尾的文件。请注意，在 PowerShell 中使用 -Filter 参数时，通配符（如 *）通常可以直接使用，不需要额外的引号，但为了保险起见，使用引号也是可以的。
+- `-Filter "*.yml"`: 使用过滤器来匹配文件名为 .yml 结尾的文件。请注意，在 PowerShell 中使用 -Filter 参数时，通配符（如 `*`）通常可以直接使用，不需要额外的引号，但为了保险起见，使用引号也是可以的。
 - `-Recurse`: 递归地搜索子目录。
 
 可简写为：
@@ -112,3 +114,26 @@ Get-ChildItem -l . -fi "*.yml" -r
   - 例如：`[0-9].txt` 会匹配任何以单个数字开头，后跟 .txt 的文件。
 - `[!...]` 或 `[^...]`：匹配不在方括号内列出的任意一个字符。
   - 例如：`[!abc].txt` 会匹配除了 a.txt、b.txt 或 c.txt 之外的任何以单个字符开头，后跟 .txt 的文件。
+
+## 查找包含指定文本的文件
+
+```powershell
+Get-ChildItem -Path . -Recurse -Include *.js,*.ts | Select-String -Pattern "easyimage"
+```
+
+1. **`Get-ChildItem -Path . -Recurse -Include *.js,*.ts`**:
+    - `Get-ChildItem` 是 PowerShell 中用于获取文件和文件夹的 cmdlet（命令）。
+    - `-Path .` 指定了要搜索的起始路径是当前目录（`.` 代表当前目录）。
+    - `-Recurse` 表示递归地搜索所有子目录。
+    - `-Include *.js,*.ts` 表示只包含文件扩展名为 `.js` (JavaScript 文件) 和 `.ts` (TypeScript 文件) 的文件。
+    - **所以，这部分命令的意思是：在当前目录及其所有子目录中，查找所有的 JavaScript 文件和 TypeScript 文件。**
+2. **`|` (管道操作符)**:
+    - 管道操作符将前一个命令的输出作为后一个命令的输入。
+    - 在这里，`Get-ChildItem` 找到的所有 `.js` 和 `.ts` 文件的路径和信息，会被传递给 `Select-String` 命令。
+3. **`Select-String -Pattern "easyimage"`**:
+    - `Select-String` 是 PowerShell 中用于在字符串中查找指定模式（文本）的 cmdlet。
+    - `-Pattern "easyimage"` 指定了要查找的文本模式是 `"easyimage"`。`Select-String` 会查找包含这个精确字符串的行。
+
+其实用 `Get-ChildItem -Path . -Filter "*.ts" -Recurse | Select-String -Pattern "easyimage"` 也可以，区别在于：
+
+`-Include`可以包含多种文件类型，`-Filter`只能是一种文件类型（但更高效）
