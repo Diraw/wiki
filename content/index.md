@@ -19,6 +19,8 @@ title: index
 
 [[powershell]]
 
+[[批处理文件]]
+
 # C++
 
 [[指针]]
