@@ -15,6 +15,8 @@ title: index
 
 # windows
 
+[[windows常用软件]]
+
 [[powershell]]
 
 # C++
@@ -24,10 +26,6 @@ title: index
 # 服务器
 
 [[nginx]]
-
-# Debug
-
-[[wsl]]
 
 # 其他
 
