@@ -19,7 +19,6 @@
 		- 位置1：Ctrl + Num 1
 		- ……
 
-
 # Everything
 
 [下载 - voidtools](https://www.voidtools.com/zh-cn/downloads/)
@@ -27,4 +26,12 @@
 # RustDesk
 
 [放弃todesk，服务器自建rustdesk服务 | Diraw的世界](https://diraw.top/2025/09/28/CS/www/8/)
+
+# MobaXterm
+
+[MobaXterm Xserver with SSH, telnet, RDP, VNC and X11 - Download](https://mobaxterm.mobatek.net/download.html)
+
+# Clash-Verge
+
+[Releases · clash-verge-rev/clash-verge-rev](https://github.com/Clash-Verge-rev/clash-verge-rev/releases)
 

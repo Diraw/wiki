@@ -31,3 +31,5 @@ title: index
 
 [[正则表达式]]
 
+[[obsidian插件]]
+

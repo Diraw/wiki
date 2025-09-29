@@ -1,0 +1,11 @@
+# Latex Suite
+
+增添配置：
+
+```
+{trigger: "^", replacement: "^{$0}$1", options: "mA"},
+{trigger: "@n", replacement: "\\nabla", options: "mA"},
+{trigger: "@p", replacement: "\\partial", options: "mA"},
+{trigger: "frac", replacement: "\\frac{$1}{$2}$3", options: "mA"},
+```
+
