@@ -1,4 +1,4 @@
-@echo off
+@echo on
 call nvm use 22
 npx quartz sync
 pause
