@@ -11,6 +11,8 @@ title: index
 
 # linux
 
+**vim**：[[vim基础]] [[vim插件]]
+
 **debian/ubuntu**：[[常用指令]]
 
 # windows
