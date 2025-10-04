@@ -11,6 +11,8 @@ title: index
 
 **matplotlib**：[[matplotlib基础]] 
 
+**其他库**：[[tqdm]]
+
 # linux
 
 **vim**：[[vim基础]] [[vim插件]]
