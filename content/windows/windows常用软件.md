@@ -22,7 +22,8 @@
 **跨设备共享：**
 - 因为个人PC的IP一直在变，所以我使用同一局域网内电脑名称进行共享。具体配置如下图：
 
-<img src="https://img.diraw.top/i/2025/10/04/z0n6io.png" width="75%" />
+<img src="https://img.diraw.top/i/2025/10/04/z0n6io.png"/>
+
 - 在另外一台上也这样配置即可
 - 成功后在一台电脑上ctrl-c之后，在另外一台电脑上马上就会出现复制的内容，并显示PC名称和IP
 
