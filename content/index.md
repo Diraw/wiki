@@ -3,8 +3,6 @@ title: index
 ---
 
 本文档负责记录不适合发在[主站](https://diraw.top/)的纯知识搬运内容，主站负责发布过程记录内容
-
-注：本文档包含ai生成内容，但每一行文字和代码我都过了一遍，可放心使用
 # python
 
 **pandas**：[[pandas基础]] [[常用方法和属性]]
@@ -17,7 +15,7 @@ title: index
 
 **vim**：[[vim基础]] [[vim插件]]
 
-**debian/ubuntu**：[[常用指令]]
+**debian/ubuntu**：[[常用指令]] [[安装包]] [[压缩包]] [[chmod]] [[curl和wget]] [[find和grep]] [[rsync]] 
 
 # windows
 
