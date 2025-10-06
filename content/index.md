@@ -19,9 +19,7 @@ title: index
 
 # windows
 
-[[windows常用软件]]
-
-[[powershell]]
+**软件**：[[windows常用软件]] [[powershell]] [[diskpart]]
 
 [[批处理文件]]
 
