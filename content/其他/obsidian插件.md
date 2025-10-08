@@ -7,5 +7,7 @@
 {trigger: "@n", replacement: "\\nabla", options: "mA"},
 {trigger: "@p", replacement: "\\partial", options: "mA"},
 {trigger: "frac", replacement: "\\frac{$1}{$2}$3", options: "mA"},
+{trigger: "()", replacement: "\\left($0\\right", options: "mA"},
+{trigger: "||", replacement: "\\left|$0\\right|", options: "mA"},
 ```
 
