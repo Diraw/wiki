@@ -1,8 +1,9 @@
 ---
 title: index
 ---
+本文档负责记录不适合发在 [主站](https://diraw.top/) 的纯知识搬运内容，主站负责发布过程记录内容
 
-本文档负责记录不适合发在[主站](https://diraw.top/)的纯知识搬运内容，主站负责发布过程记录内容
+设有wiki分站：[词源文档](https://word.wiki.diraw.top/)
 # python
 
 **pandas**：[[pandas基础]] [[常用方法和属性]]
