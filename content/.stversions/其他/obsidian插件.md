@@ -9,6 +9,5 @@
 {trigger: "frac", replacement: "\\frac{$1}{$2}$3", options: "mA"},
 {trigger: "()", replacement: "\\left($0\\right", options: "mA"},
 {trigger: "||", replacement: "\\left|$0\\right|", options: "mA"},
-{trigger: "@{", replacement: "\\\{$0\\\}", options: "mA"},
 ```
 

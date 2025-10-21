@@ -47,8 +47,5 @@
 
 # Wise Disk Cleaner
 
-[Download The Latest WiseCleaner Products](https://www.wisecleaner.com/download.html)
+[WiseCleaner Download Center - Download The Latest WiseCleaner Products](https://www.wisecleaner.com/download.html)
 
-# SpaceSniffer
-
-[Releases · redtrillix/SpaceSniffer](https://github.com/redtrillix/SpaceSniffer/releases)
