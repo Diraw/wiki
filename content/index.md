@@ -10,7 +10,7 @@ title: index
 
 **matplotlib**：[[matplotlib基础]] 
 
-**其他库**：[[tqdm]]
+**其他库**：[[tqdm]] [[concurrent.futures]] 
 
 # linux
 
