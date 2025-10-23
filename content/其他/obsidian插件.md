@@ -12,3 +12,9 @@
 {trigger: "@{", replacement: "\\\{$0\\\}", options: "mA"},
 ```
 
+修改配置：
+
+```
+{trigger: "align", replacement: "\\begin{aligned}\n$0\n\\end{aligned}", options: "mA"},
+```
+
