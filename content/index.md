@@ -38,9 +38,9 @@ title: index
 
 # 物理专业课
 
-**QFT**：[[0. notation]] [[0. preparation]] [[1. why QFT]] 
+**QFT**：[[0. preparation]] [[1. why QFT]] 
 
-**群论**：[[第一章 群的基本概念]] 
+**群论**：[[1. 群的基本概念]] [[2. 群表示理论]]
 
 # 其他
 
