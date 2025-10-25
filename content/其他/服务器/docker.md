@@ -194,34 +194,83 @@ Docker 网络允许容器之间以及容器与外部世界进行通信。理解 
 
 # Docker Compose
 
-- **多容器应用管理**：解决单个 Dockerfile 和 `docker run` 命令管理复杂应用的问题。
-- **`docker-compose.yml` 文件**：
-    - 语法结构（version, services, networks, volumes）。
-    - 定义服务、端口映射、数据卷挂载、环境变量等。
-- **常用命令**：
-    - `docker-compose up`：启动所有服务。
-    - `docker-compose down`：停止并移除所有服务。
-    - `docker-compose build`：构建服务镜像。
+Docker Compose 是一个用于定义和运行多容器 Docker 应用程序的工具。通过一个 YAML 文件来配置应用程序的服务，然后使用一个命令，就可以创建并启动所有服务。
+
+**核心概念：**
+
+1. **服务 (Services)：**
+    
+    - 服务是应用程序中的一个独立组件，例如一个 Web 服务器、一个数据库或一个缓存。
+    - 在 `docker-compose.yml` 文件中，每个服务都定义了其使用的 Docker 镜像、端口映射、卷挂载、环境变量等配置。
+2. **项目 (Project)：**
+    
+    - 一个项目通常对应一个应用程序，它包含一个或多个服务。
+    - 当你运行 `docker-compose up` 命令时，Docker Compose 会根据 `docker-compose.yml` 文件中的定义创建一个项目。
+3. **`docker-compose.yml` 文件：**
+    
+    - 这是 Docker Compose 的核心配置文件。
+    - 它使用 YAML 格式，定义了应用程序的所有服务、网络和卷。
+    - 一个典型的 `docker-compose.yml` 文件会包含 `version`、`services`、`networks` 和 `volumes` 等顶级键。
+
+**优势：**
+
+1. **简化多容器应用管理：**
+    
+    - 对于包含多个服务（例如 Web 应用、数据库、缓存等）的复杂应用，手动管理每个 Docker 容器会非常繁琐。
+    - Docker Compose 允许你将所有服务的配置集中在一个文件中，然后通过一个命令来启动、停止、重启或删除整个应用。
+2. **环境一致性：**
+    
+    - 通过 `docker-compose.yml` 文件，你可以确保开发、测试和生产环境中的应用程序配置保持一致。
+    - 这减少了“在我机器上可以运行”的问题，因为所有团队成员都使用相同的配置来运行应用程序。
+3. **快速开发和测试：**
+    
+    - 开发者可以快速启动一个完整的应用程序环境，而无需手动配置每个服务。
+    - 这对于本地开发和自动化测试非常有用。
+4. **易于扩展和维护：**
+    
+    - 当需要添加或修改服务时，只需更新 `docker-compose.yml` 文件即可。
+    - Docker Compose 会自动处理容器的创建、网络连接和卷挂载。
+5. **服务间通信：**
+    
+    - Docker Compose 会为项目中的所有服务创建一个默认网络，使得服务之间可以通过服务名进行通信，而无需知道对方的 IP 地址。
+
+**一个简单的 `docker-compose.yml` 示例：**
+
+```yaml
+version: '3.8' # 指定 Compose 文件格式版本
+
+services:
+  web: # 定义一个名为 'web' 的服务
+    image: nginx:latest # 使用 Nginx 镜像
+    ports:
+      - "80:80" # 将主机的 80 端口映射到容器的 80 端口
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro # 挂载本地 nginx.conf 到容器
+    depends_on: # 声明 web 服务依赖于 db 服务
+      - db
+
+  db: # 定义一个名为 'db' 的服务
+    image: postgres:13 # 使用 PostgreSQL 13 镜像
+    environment: # 设置环境变量
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/postgresql/data # 挂载一个命名卷用于数据持久化
+
+volumes:
+  db_data: # 定义一个命名卷
+```
+
+**如何使用：**
+
+1. **安装 Docker 和 Docker Compose。**
+2. **创建一个 `docker-compose.yml` 文件**，并定义你的服务。
+3. **在包含 `docker-compose.yml` 文件的目录下，运行以下命令：**
+    - `docker-compose up -d`：在后台启动所有服务。
     - `docker-compose ps`：查看服务状态。
-    - `docker-compose logs`：查看服务日志。
+    - `docker-compose stop`：停止所有服务。
+    - `docker-compose down`：停止并删除所有服务、网络和卷。
 
-**四、Docker 进阶与实践**
+# 如何自己打包docker
 
-1. **容器化应用开发流程**：
-    - 如何将一个传统应用容器化。
-    - 开发、测试、部署的容器化工作流。
-2. **CI/CD 与 Docker**：
-    - 在 CI/CD 管道中集成 Docker（例如 Jenkins, GitLab CI/CD）。
-    - 自动化构建、测试、推送镜像。
-3. **安全性**：
-    - 最小化基础镜像。
-    - 非 root 用户运行容器。
-    - 限制容器资源。
-    - 镜像扫描。
-4. **故障排查**：
-    - 如何诊断容器启动失败、网络问题、应用错误等。
-    - 利用 `docker logs`, `docker exec`, `docker inspect` 等工具。
-5. **资源管理**：
-    - 限制容器的 CPU、内存使用。
-6. **Docker Daemon 配置**：
-    - 了解 `/etc/docker/daemon.json` 配置文件的作用。

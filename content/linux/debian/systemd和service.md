@@ -74,3 +74,7 @@ Systemd 进程（版本 24.04）：
   <img src="https://img.diraw.top/i/2025/10/25/wc41do.png"  style="max-width: 75%; height: auto; display: block; margin-right: 2%;">
 </div>
 
+**更多阅读**：
+
+- [在没有systemd的系统上启动守护进程](https://diraw.top/2025/10/25/CS/Windows/9/)
+

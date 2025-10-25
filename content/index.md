@@ -18,7 +18,7 @@ title: index
 
 **debian/ubuntu**：[[常用指令]] [[安装包]] [[压缩包]] [[chmod]] [[curl和wget]] [[find和grep]] [[rsync]] [[systemd和service]] 
 
-**软件安装**：[[linux/软件安装/docker|docker]] [[tailscale]]
+**软件安装**：[[linux/软件安装/docker|docker]] [[tailscale]] 
 
 # windows
 
