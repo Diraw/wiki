@@ -1,0 +1,76 @@
+# Systemd
+
+**Systemd** 是 Linux 系统中一个现代的、功能强大的**初始化系统**和**系统管理器**。在 Ubuntu 15.04 及更高版本中，`systemd` 已经取代了传统的 `Upstart` 和 `SysVinit` 作为默认的初始化系统。
+
+**核心职责：**
+
+1. **系统启动（PID 1）：** 它是内核启动后运行的第一个用户空间进程，其进程 ID（PID）永远是 1。它负责启动所有其他的系统进程和服务。
+2. **服务管理：** 启动、停止、重启、重载、监控各种后台服务（例如 Web 服务器、数据库）。
+3. **资源管理：** 不仅仅是服务，它还管理其他系统资源，如文件系统挂载点、网络设备、定时任务等。
+4. **并行启动：** 能够同时启动多个服务，大大加快了系统启动速度。
+5. **依赖管理：** 确保服务按照正确的顺序启动，例如，数据库服务必须在 Web 服务器之前启动。
+6. **日志管理：** 集成了 `journald`，提供统一的、结构化的日志系统。
+
+`systemd` 使得 Linux 系统的启动更快、更可靠，并且提供了一个统一的接口来管理几乎所有的系统组件。它是现代 Linux 发行版（包括 Ubuntu 15.04 及更高版本）的核心组成部分。
+
+**实际主要通过 `systemctl` 命令与 Systemd 交互**：
+
+- `systemctl start apache2`：启动 Apache Web 服务器。
+- `systemctl enable ssh`：设置 SSH 服务在开机时自动启动。
+- `systemctl status mysql`：查看 MySQL 数据库服务的运行状态。
+
+# Service
+
+在 `systemd` 的上下文中，**Service（服务）是指一个由 `systemd` 管理的后台运行的程序或守护进程。**
+
+这些服务是系统功能的具体实现者。它们通常在后台默默运行，不与用户直接交互，但它们为用户或系统上的其他程序提供特定的功能。
+
+**核心特点：**
+
+1. **后台运行：** 它们通常是守护进程（daemon），在后台运行，不占用终端。
+2. **由 Systemd 管理：** 它们的生命周期（启动、停止、重启等）完全由 `systemd` 控制。
+3. **配置文件：** 每个服务都有一个 `.service` 单元文件（通常在 `/etc/systemd/system/` 或 `/lib/systemd/system/`），其中包含了如何启动、停止、以及其他配置信息。
+4. **提供功能：** 它们是系统提供各种具体功能的载体。
+
+**如何与 Service 交互？**
+
+虽然 `service` 命令在一些发行版中仍然可用（通常作为兼容性层或用于管理旧的 SysVinit 脚本），但在现代 Ubuntu 中，与服务交互的**首选和推荐方式是使用 `systemctl` 命令**。
+
+例如，如果你想启动 Apache 服务：
+
+- **推荐方式：** `sudo systemctl start apache2`
+- **旧的兼容方式（可能仍然有效）：** `sudo service apache2 start`
+
+# 查看启动方式
+
+1. **打开你的 WSL 终端。**
+2. **运行以下命令：**
+
+```bash
+ps -p 1 -o comm=
+```
+
+或者更详细地：
+
+```bash
+ps -p 1 -o pid,comm,args
+```
+
+- `ps`: 用于报告当前进程状态的命令。
+- `-p 1`: 指定只查看 PID 为 1 的进程。
+- `-o comm=`: 这是一个格式选项。
+    - `comm`: 显示命令的名称（不带路径和参数）。`=` 符号表示不显示标题行。
+    - 如果使用 `pid,comm,args`，它会显示 PID、命令名称和完整的命令行参数，这通常能提供更多上下文信息。
+
+WSL 内部提供的一个轻量级 `init` 进程（版本 20.04）：
+
+<div style="display: flex; width: 100%; align-items: flex-start;">
+  <img src="https://img.diraw.top/i/2025/10/25/wav1fo.png"  style="max-width: 75%; height: auto; display: block; margin-right: 2%;">
+</div>
+
+Systemd 进程（版本 24.04）：
+
+<div style="display: flex; width: 100%; align-items: flex-start;">
+  <img src="https://img.diraw.top/i/2025/10/25/wc41do.png"  style="max-width: 75%; height: auto; display: block; margin-right: 2%;">
+</div>
+
