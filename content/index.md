@@ -16,7 +16,7 @@ title: index
 
 **vim**：[[vim基础|基础]] [[vim插件|插件]]
 
-**debian/ubuntu**：[[常用指令]] [[安装包]] [[压缩包]] [[chmod]] [[curl和wget]] [[find和grep]] [[rsync]] [[systemd和service]] 
+**debian/ubuntu**：[[常用指令]] [[安装包]] [[压缩包]] [[chmod]] [[curl和wget]] [[find和grep]] [[rsync]] [[systemd和service]] [[ssh-keygen]] 
 
 **软件安装**：[[linux/软件安装/docker|docker]] [[tailscale]] 
 
