@@ -359,7 +359,7 @@ Dirac方程：$(i\gamma^{\mu}\partial_{\mu}-m)\psi=0$
 狄拉克旋量是洛伦兹群 $SO(1,3)$ 的二重覆盖群 $Spi n(1,3)$ 的表示，**当物理系统进行 $2\pi$ 旋转时，旋量会改变其符号，只有在进行 $4\pi$ 旋转后才能恢复到初始状态**。这种变换性质正合适描述自旋1/2粒子（如电子）自旋。
 
 考虑绕 $z$ 轴的旋转算符：$R_{z}(\theta)=e^{-i\theta S_{z}/\hbar}$ 
-- $S_{z}$：沿 $z$ 轴的角动量算符，而 $S^{\mu \nu}=\frac{i\hbar}{4}[\gamma^{\mu},\gamma^{\nu}]$
+- $S_{z}$：沿 $z$ 轴的角动量算符，由广义相对论 $S^{\mu \nu}=\frac{i\hbar}{4}[\gamma^{\mu},\gamma^{\nu}]$
 
 对于狄拉克旋量，$S_{z}=S^{12}=\frac{\hbar}{2}\begin{pmatrix}\sigma_{z}&0 \\ 0&\sigma_{z}\end{pmatrix}$，$R_{z}(\theta)=\begin{pmatrix}e^{-i\frac{\theta}{2}\sigma_{z}}&0 \\ 0&e^{-i\frac{\theta}{2}\sigma_{z}}\end{pmatrix}$，其中 $e^{-i\frac{\theta}{2}\sigma_{z}}=\cos\left( \frac{\theta}{2} \right)I_{2}-i\sin\left( \frac{\theta}{2} \right)\sigma_{z}$ 
 
@@ -374,6 +374,8 @@ R_{z}(2\pi)=\begin{pmatrix}
 
 则，$4\pi$ 旋转 $R_{z}(4\pi)=I_{4}$
 
+---
+
 狄拉克方程的解不仅包含正能量解（对应电子），还包含负能量解。狄拉克最初提出了“狄拉克海”的概念来解释这些负能量态，认为所有负能量态都被填满了。后来，费曼等人重新解释了这些负能量解，认为它们对应于具有正能量但电荷相反的粒子，即反粒子。
 
 ---
@@ -381,15 +383,16 @@ R_{z}(2\pi)=\begin{pmatrix}
 在狄拉克代数的基中，**伪标量 $\gamma^{5}$ 尤其重要**。它不仅在宇称变换下改变符号，更在粒子物理中扮演着**手征算符**的角色。通过 $\gamma^{5}$，我们可以将狄拉克旋量分解为左手旋量和右手旋量分量。在弱相互作用中，只有左手旋量参与，这导致了宇称不守恒的现象，是粒子物理标准模型中的一个核心特征。
 
 $\gamma^{5}$ 的两个代数性质：
-- 幂等性平方：$(\gamma^{5})^{2})=1$ 
-- 反对易性：$\{\gamma^{5},\gamma^{\mu}\}=0$ 
+- 幂等性平方：$(\gamma^{5})^{2}=1$ 
+- 反对易性：$\{\gamma^{5},\gamma^{\mu}\}=0$ （$\gamma^{5}$ 与任何一个狄拉克 $\gamma$ 矩阵都反对易）
 
 定义手征投影算符：$P_{L}=\frac{1-\gamma^{5}}{2}$ 和 $P_{R}=\frac{1+\gamma^{5}}{2}$ 
 - 幂等性：$P_{L}^{2}=P_{L}$，$P_{R}^{2}=P_{R}$
 - 正交性：$P_{L}P_{R}=0$
 - 完备性：$P_{L}+P_{R}=1$ 
 
-任何狄拉克旋量 $\psi$ 都可以被分解为两个手征分量：$\psi=\mathbf{1}\psi=(P_{L}+P_{R})\psi=\psi_{L}+\psi_{R}$，称 $\psi_{L}$，$\psi_{R}$ 为左手、右手旋量
+任何狄拉克旋量 $\psi$ 都可以被分解为两个手征分量：$\psi=\mathbf{1}\psi=(P_{L}+P_{R})\psi=\psi_{L}+\psi_{R}$
+- 称 $\psi_{L}$，$\psi_{R}$ 为左手、右手旋量
 
 这些手征分量都是 $\gamma^{5}$ 的本征态：
 - 左手旋量：$\gamma^{5}\psi_{L}=\gamma^{5}\frac{1-\gamma^{5}}{2}\psi=\frac{\gamma^{5}-1}{2}\psi=-\psi_{L}$ （本征值为 $-1$）
@@ -401,19 +404,96 @@ $$
 \psi(t,\mathbf{x})\xrightarrow{P}\psi'(t, \mathbf{x})=\gamma^{0}\psi(t,-\mathbf{x})
 $$
 
-现考察 $\gamma^{5}$ 在宇称变换下的行为。一个算符 $O$ 在宇称变换下的行为由 $POP^{-1}$ 给出。由于 $(\gamma^{0})^{2}=\mathbf{1}$，所以 $P^{-1}=\gamma^{0}$ $\Rightarrow$ $P\gamma^{5}P^{-1}=\gamma^{0}\gamma^{5}\gamma^{0}=\gamma^{0}(-\gamma^{0}\gamma^{5})=-(\gamma^{0})^{2}\gamma^{5}=-\gamma^{5}$
+现考察 $\gamma^{5}$ 在宇称变换下的行为。
+
+在狄拉克理论中，宇称算符 $P$ 在旋量空间中的作用被表示为 $\gamma^{0}$，有 $P=\gamma^{0}$。一个算符 $O$ 在宇称变换下的行为由 $POP^{-1}$ 给出。
+
+由于 $(\gamma^{0})^{2}=\mathbf{1}$，所以 $P^{-1}=\gamma^{0}$ $\Rightarrow$ $P\gamma^{5}P^{-1}=\gamma^{0}\gamma^{5}\gamma^{0}=\gamma^{0}(-\gamma^{0}\gamma^{5})=-(\gamma^{0})^{2}\gamma^{5}=-\gamma^{5}$
  
+因此，$\gamma^{5}$ **在宇称变换下改变符号，它是一个伪标量**
 
+这意味着，手征投影算符 $P_{L}$​ 和 $P_{R}$​ 在宇称变换下会互换：
+- $PP_{L}P^{-1}=P\frac{1-\gamma^{5}}{2}P^{-1}=\frac{1-P\gamma^{5}P^{-1}}{2}=\frac{1-(-\gamma^{5})}{2}=P_{R}$ 
+- $PP_{R}P^{-1}=P_{L}$ 
 
+所以，宇称变换会将左手旋量变为右手旋量，将右手旋量变为左手旋量：
+- $P\psi_{L}P^{-1}=P(P_{L}\psi)P^{-1}=(PP_{L}P^{-1})(P\psi P^{-1})=P_{R}(\gamma^{0}\psi(t,-\mathbf{x}))=\psi'_{R}$ 
+- $P\psi_{R} P^{-1}=P_{L}(\gamma^{0}\psi(t,\mathbf{x}))$ 
 
+在粒子物理的标准模型中，**弱相互作用**（例如，电子和中微子之间的相互作用）的物理过程由一个特殊的**弱电流**来描述。这个电流具有一个独特的结构，被称为 **V-A (Vector minus Axial-vector) 形式**：
 
+$$
+J_{\mu}=\bar{\psi}\gamma^{\mu}(\mathbf{1}-\gamma^{5})\psi
+$$
+
+其中 $\bar{\psi}=\psi ^{\dagger}\gamma^{0}$ 是狄拉克伴随旋量
+
+这个表达式中的因子 $(\mathbf{1}-\gamma^{5})$ 正好是 $2P_{L}$。这意味着弱相互作用的电流可以写成：
+
+$$
+J^{\mu}=2\bar{\psi}\gamma^{\mu}P_{L}\psi=2\bar{\psi}\gamma^{\mu}\psi_{L}
+$$
+
+这个形式清楚地表明，**弱相互作用只与狄拉克旋量的左手分量 $\psi_{L}$​ 发生作用**
+
+现在我们考察这个弱电流在宇称变换下的行为。一个理论如果遵守宇称对称性，那么它的相互作用项在宇称变换下必须保持不变。
+
+弱电流 $J^{\mu}$ 宇称变换之前写作：
+
+$$
+J^{\mu}=\bar{\psi}\gamma^{\mu}(\mathbf{1}-\gamma^{5})\psi
+$$
+
+在宇称变换下，$\bar{\psi}(t,\mathbf{x})\xrightarrow{P}\bar{\psi}'(t,\mathbf{x})=\bar{\psi}(t,-\mathbf{x})\gamma^{0}$ ，且 $\gamma^{\mu}$ 的变换为 $P\gamma^{\mu}P^{-1}=\gamma^{0}\gamma^{\mu}\gamma^{0}$：
+- $P\gamma^{0}P^{-1}=\gamma^{0}$ 
+- $P\gamma^{i}P^{-1}=-\gamma^{i}$（对于空间指标 $i=1,2,3$）
+
+同时，我们知道 $P\gamma^{5}P^{-1}=-\gamma^{5}$
+
+考虑电流的变换：
+
+$$
+\begin{aligned}
+J^{\mu}\xrightarrow{P}J^{\mu}_{P}&=\bar{\psi}'(t,\mathbf{x})\gamma^{\mu}(\mathbf{1}-\gamma^{5})\psi'(t,\mathbf{x})\\
+&=\bar{\psi}(t,-\mathbf{x})\gamma^{0}\gamma^{\mu}(\mathbf{1}-\gamma^{5})\gamma^{0}\psi(t,-\mathbf{x})\\
+&=\bar{\psi}(t,-\mathbf{x})(\gamma^{0}\gamma^{\mu}\gamma^{0}-\gamma^{0}\gamma^{\mu}\gamma^{5}\gamma^{0})\psi(t,-\mathbf{x})\\
+&=\bar{\psi}(t,-\mathbf{x})(\gamma^{0}\gamma^{\mu}\gamma^{0}+\gamma^{0}\gamma^{\mu}\gamma^{0}\gamma^{5})\psi(t,-\mathbf{x})\\
+&=\bar{\psi}(t,-\mathbf{x})(\gamma^{0}\gamma^{\mu}\gamma^{0})(\mathbf{1}+\gamma^{5})\psi(t,-\mathbf{x})
+\end{aligned}
+$$
+
+这个结果清晰地表明了两点：
+
+1. **协变性**：流的四矢量分量部分 $\gamma^{\mu}$ 变成了 $\gamma^{0}\gamma^{\mu}\gamma^{0}$，这正是四矢量在宇称变换下应有的变换行为。
+2. **对称性破缺**：内部的手征结构从 V-A $(\mathbf{1}-\gamma^{5})$ 变成了 V+A $(\mathbf{1}+\gamma^{5})$，**由于变换后的物理定律（由 V+A 描述）与原始的物理定律（由 V-A 描述）具有不同的代数形式，因此我们说这个理论不具备宇称对称性**，或者说，弱相互作用破坏了宇称对称性。
+
+也就是按理来说，宇称变换前后，弱电流算符始终应该只与左手旋量作用。但是现在出现的情况是，**宇称变换后，弱电流算符仍然跑去和宇称变换之前是左手旋量、现在宇称变换后已经是右手的旋量结合去了**。算符本身不能因为粒子的改变（粒子从左手变成右手）而改变（算符从偏爱左手变成偏爱右手），但现在却改变了，因为定律本身变了，所以对称性被破坏了。
 
 ---
 
-在弯曲时空中，狄拉克方程变为：$(i\gamma^{\mu}D_{\mu}-m)\psi=0$ 
-- $D_{\mu}=\partial_{\mu}+\frac{i}{2}\omega_{\mu ab}S^{ab}$ 是协变导数
-	- $\omega_{\mu ab}$：自旋连接，它描述了旋量在弯曲时空中的传输
-	- $S^{ab}=\frac{1}{4}[\gamma^{a},\gamma^{b}]$：洛伦兹群的生成元
-		- 正是广义相对论中 Clifford 代数的应用
+附标准的教科书论证方法：
 
+弱电流 $J^{\mu}$ 是一个矢量分量 $V^{\mu}=\bar{\psi}\gamma^{\mu}\psi$ 和一个轴矢量分量 $A^{\mu}=\bar{\psi}\gamma^{\mu}\gamma^{5}\psi$ 的差，即 $J^{\mu}=V^{\mu}-A^{\mu}$ 
+
+考虑一个典型的弱相互作用项，例如 $J^{\mu}J_{\mu}$。在宇称变换下，它的行为如下：
+
+$$
+J^{\mu}J_{\mu}=(V^{\mu}-A^{\mu})(V_{\mu}-A_{\mu})=V^{\mu}V_{\mu}-V^{\mu}A_{\mu}-A^{\mu}V_{\mu}+A^{\mu}A_{\mu}
+$$
+
+在宇称变换下：
+
+- $V^{\mu}V_{\mu}$ 是一个标量，其形式不变。
+- $A^{\mu}A_{\mu}$​ 是一个标量，其形式不变。
+- $V^{\mu}A_{\mu}$ 和 $A^{\mu}V_{\mu}$ 是伪标量，它们在宇称变换下会改变符号。
+
+因此，整个相互作用项 $J^{\mu}J_{\mu}$ 在宇称变换下变为：
+
+$$
+\begin{aligned}
+(V^{\mu}-A^{\mu})(V_{\mu}-A_{\mu})&=(V^{\mu}V_{\mu}-V^{\mu}A_{\mu}-A^{\mu}V_{\mu}+A^{\mu}A_{\mu})\\
+\xrightarrow{P}(V^{\mu}V_{\mu}+V^{\mu}A_{\mu}+A^{\mu}V_{\mu}+A^{\mu}A_{\mu})&=(V^{\mu}+A^{\mu})(V_{\mu}+A_{\mu})
+\end{aligned}
+$$
+由于 $(V^{\mu}-A^{\mu})(V_{\mu}-A_{\mu})\neq(V^{\mu}+A^{\mu})(V_{\mu}+A_{\mu})$，这意味着**弱相互作用的拉格朗日密度在宇称变换下改变了其代数形式**（从 V-A 耦合变为 V+A 耦合）。这种形式的改变直接证明了弱相互作用不遵守宇称对称性。
 
