@@ -213,7 +213,7 @@ $$
 - $V=\mathbb{R}^{n}$
 - $Q(\mathbf{v})=\mathbf{v}^{T}I\mathbf{v}$，其中 $I$ 为单位矩阵
 - 度规矩阵 $G=I$ 
-- 度规张量 $B(\mathbf{u},\mathbf{v})=\sum_{i=1}^{n}u^{i}v^{i}=u^{i}v_{i}$ 
+- 度规张量 $B(\mathbf{u},\mathbf{v})=\sum_{i=1}^{n}u^{i}v^{i}=u^{i}v_{i}$（爱因斯坦求和约定）
 - 对于欧氏几何，长度是正的，并且满足勾股定理
 - 可记作 $Cl(\mathbb{R}^{n},Q)$ 或 $Cl_{n}(\mathbb{R})$ 或 $Cl(n,0)$ 
 
@@ -226,7 +226,8 @@ $$
 - 一般记作 $Cl_{1,3}(\mathbb{R})$ 或 $Cl(1,3)$ 
 
 其他伪欧几里得空间：
-- 度规矩阵 $G =\text{diag}(\underbrace{1, \ldots, 1}_{p \text{ 次}}, \underbrace{-1, \ldots, -1}_{q \text{ 次}})$
+- 度规矩阵 $G =\text{diag}(\underbrace{1, \ldots, 1}_{p \text{ 次}}, \underbrace{-1, \ldots, -1}_{q \text{ 次}})$ 
+- 一般记作 $Cl(p,q)$： $p$ 个基向量平方为 $+1$ 和 $q$ 个基向量平方为 $-1$ 
 
 以上均为度规矩阵为对角矩阵的例子。如果空间的基对于二次型不是正交的，度规矩阵就会出现非对角分量
 
@@ -327,10 +328,11 @@ $$
 2. 向量：$\gamma^{\mu}$（4个）
 	1. 对应时空向量，如粒子的四动量 $p^{\mu}$、电磁场的四电流 $j^{\mu}$ 等
 3. 双向量或二形式（2-form）：$\sigma^{\mu \nu}=\frac{i}{2}[\gamma^{\mu},\gamma^{\nu}]$（6个）
-	1. 更基本应该写成 $\gamma^{\mu}\gamma^{\nu}$ 且 $\mu<\nu$ 
+	1. 更基本应该写成 $\gamma^{\mu}\gamma^{\nu}$ 且 $\mu<\nu$，但 $\sigma^{\mu \nu}$ 是物理学中洛伦兹群生成元在这个表示下的具体形式
 	2. 对应时空中的二阶反对称张量，如电磁场张量 $F^{\mu \nu}$、洛伦兹群的生成元（描述旋转和洛伦兹加速）、自旋角动量算符 $S^{\mu \nu}=\frac{i\hbar}{4}[\gamma^{\mu},\gamma^{\nu}]$ 等
 4. 三向量或三形式或伪向量：$\gamma^{0}\gamma^{1}\gamma^{2},\gamma^{0}\gamma^{1}\gamma^{3},\gamma^{0}\gamma^{2}\gamma^{3},\gamma^{1}\gamma^{2}\gamma^{3}$ （4个）
-	1. 对应于轴向量或轴流，如轴向电流
+	1. 这四个向量也可以通过 $\gamma^{5}\gamma^{\mu}$ 生成
+	2. 对应于轴向量或轴流，如轴向电流
 5. 伪标量 (Pseudoscalar)：$\gamma^{5}=i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$（1个）
 	1. 对应宇称变换下改变符号的标量。在粒子物理中，它与手征对称性破缺、轴向异常等现象相关
 
@@ -393,10 +395,11 @@ $\gamma^{5}$ 的两个代数性质：
 
 任何狄拉克旋量 $\psi$ 都可以被分解为两个手征分量：$\psi=\mathbf{1}\psi=(P_{L}+P_{R})\psi=\psi_{L}+\psi_{R}$
 - 称 $\psi_{L}$，$\psi_{R}$ 为左手、右手旋量
+- 这些手征分量都是 $\gamma^{5}$ 的本征态：
+	- 左手旋量：$\gamma^{5}\psi_{L}=\gamma^{5}\frac{1-\gamma^{5}}{2}\psi=\frac{\gamma^{5}-1}{2}\psi=-\psi_{L}$ （本征值为 $-1$）
+	- 右手旋量：$\gamma^{5}\psi_{R}=\gamma^{5}\frac{1+\gamma^{5}}{2}\psi=\frac{\gamma^{5}+1}{2}\psi=\psi_{R}$ （本征值为 $+1$）
 
-这些手征分量都是 $\gamma^{5}$ 的本征态：
-- 左手旋量：$\gamma^{5}\psi_{L}=\gamma^{5}\frac{1-\gamma^{5}}{2}\psi=\frac{\gamma^{5}-1}{2}\psi=-\psi_{L}$ （本征值为 $-1$）
-- 右手旋量：$\gamma^{5}\psi_{R}=\gamma^{5}\frac{1+\gamma^{5}}{2}\psi=\frac{\gamma^{5}+1}{2}\psi=\psi_{R}$ （本征值为 $+1$）
+---
 
 **宇称变换 (P)** 是一种空间反演操作，它将空间坐标 $\mathbf{x}$ 变为 $-\mathbf{x}$，而时间 $t$ 不变。对于狄拉克旋量 $\psi(t,\mathbf{x})$，其宇称变换定义为：
 
@@ -404,21 +407,21 @@ $$
 \psi(t,\mathbf{x})\xrightarrow{P}\psi'(t, \mathbf{x})=\gamma^{0}\psi(t,-\mathbf{x})
 $$
 
-现考察 $\gamma^{5}$ 在宇称变换下的行为。
+在狄拉克理论中，宇称算符 $P$ 在旋量空间中的作用被表示为 $\gamma^{0}$，记作 $P=\gamma^{0}$。而一个算符 $O$ 在宇称变换下的行为由 $POP^{-1}$ 给出。
 
-在狄拉克理论中，宇称算符 $P$ 在旋量空间中的作用被表示为 $\gamma^{0}$，有 $P=\gamma^{0}$。一个算符 $O$ 在宇称变换下的行为由 $POP^{-1}$ 给出。
+现考察 $\gamma^{5}$ 在宇称变换下的行为：
+- 由于 $PP^{-1}=P\gamma^{0}=1$ 而 $(\gamma^{0})^{2}=\mathbf{1}$ ，得：$P^{-1}=\gamma^{0}$
+- 因此 $P\gamma^{5}P^{-1}=\gamma^{0}\gamma^{5}\gamma^{0}=\gamma^{0}(-\gamma^{0}\gamma^{5})=-(\gamma^{0})^{2}\gamma^{5}=-\gamma^{5}$（$\gamma^{5}$ **在宇称变换下改变符号，它是一个伪标量**）
 
-由于 $(\gamma^{0})^{2}=\mathbf{1}$，所以 $P^{-1}=\gamma^{0}$ $\Rightarrow$ $P\gamma^{5}P^{-1}=\gamma^{0}\gamma^{5}\gamma^{0}=\gamma^{0}(-\gamma^{0}\gamma^{5})=-(\gamma^{0})^{2}\gamma^{5}=-\gamma^{5}$
- 
-因此，$\gamma^{5}$ **在宇称变换下改变符号，它是一个伪标量**
+而 $\gamma^{5}$ 是伪标量意味着：
+1. 手征投影算符 $P_{L}$​ 和 $P_{R}$​ 在宇称变换下会互换：
+	- $PP_{L}P^{-1}=P\frac{1-\gamma^{5}}{2}P^{-1}=\frac{1-P\gamma^{5}P^{-1}}{2}=\frac{1-(-\gamma^{5})}{2}=P_{R}$ 
+	- $PP_{R}P^{-1}=P_{L}$ 
+2. 宇称变换会将左手旋量变为右手旋量，将右手旋量变为左手旋量：
+	- $P\psi_{L}P^{-1}=P(P_{L}\psi)P^{-1}=(PP_{L}P^{-1})(P\psi P^{-1})=P_{R}(\gamma^{0}\psi(t,-\mathbf{x}))=\psi'_{R}$ 
+	- $P\psi_{R} P^{-1}=P_{L}(\gamma^{0}\psi(t,\mathbf{x}))$ 
 
-这意味着，手征投影算符 $P_{L}$​ 和 $P_{R}$​ 在宇称变换下会互换：
-- $PP_{L}P^{-1}=P\frac{1-\gamma^{5}}{2}P^{-1}=\frac{1-P\gamma^{5}P^{-1}}{2}=\frac{1-(-\gamma^{5})}{2}=P_{R}$ 
-- $PP_{R}P^{-1}=P_{L}$ 
-
-所以，宇称变换会将左手旋量变为右手旋量，将右手旋量变为左手旋量：
-- $P\psi_{L}P^{-1}=P(P_{L}\psi)P^{-1}=(PP_{L}P^{-1})(P\psi P^{-1})=P_{R}(\gamma^{0}\psi(t,-\mathbf{x}))=\psi'_{R}$ 
-- $P\psi_{R} P^{-1}=P_{L}(\gamma^{0}\psi(t,\mathbf{x}))$ 
+---
 
 在粒子物理的标准模型中，**弱相互作用**（例如，电子和中微子之间的相互作用）的物理过程由一个特殊的**弱电流**来描述。这个电流具有一个独特的结构，被称为 **V-A (Vector minus Axial-vector) 形式**：
 
@@ -436,7 +439,7 @@ $$
 
 这个形式清楚地表明，**弱相互作用只与狄拉克旋量的左手分量 $\psi_{L}$​ 发生作用**
 
-现在我们考察这个弱电流在宇称变换下的行为。一个理论如果遵守宇称对称性，那么它的相互作用项在宇称变换下必须保持不变。
+现在我们考察这个弱电流在宇称变换下的行为。一个理论如果遵守宇称对称性，那么它的相互作用项在宇称变换下必须保持不变（算法的表达式不变）
 
 弱电流 $J^{\mu}$ 宇称变换之前写作：
 
@@ -444,13 +447,11 @@ $$
 J^{\mu}=\bar{\psi}\gamma^{\mu}(\mathbf{1}-\gamma^{5})\psi
 $$
 
-在宇称变换下，$\bar{\psi}(t,\mathbf{x})\xrightarrow{P}\bar{\psi}'(t,\mathbf{x})=\bar{\psi}(t,-\mathbf{x})\gamma^{0}$ ，且 $\gamma^{\mu}$ 的变换为 $P\gamma^{\mu}P^{-1}=\gamma^{0}\gamma^{\mu}\gamma^{0}$：
-- $P\gamma^{0}P^{-1}=\gamma^{0}$ 
-- $P\gamma^{i}P^{-1}=-\gamma^{i}$（对于空间指标 $i=1,2,3$）
+在宇称变换下，$\bar{\psi}(t,\mathbf{x})\xrightarrow{P}\bar{\psi}'(t,\mathbf{x})=\bar{\psi}(t,-\mathbf{x})\gamma^{0}$ 
 
-同时，我们知道 $P\gamma^{5}P^{-1}=-\gamma^{5}$
+（注：在宇称变换下，$\gamma^{0}$ 作用在狄拉克旋量 $\psi$ 的左边；伴随旋量 $\bar{\psi}$ 的右边）
 
-考虑电流的变换：
+考虑变换（过程使用关键公式 $\gamma^{0}\gamma^{5}\gamma^{0}=-\gamma^{5}$）：
 
 $$
 \begin{aligned}
