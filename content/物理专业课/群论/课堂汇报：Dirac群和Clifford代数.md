@@ -364,12 +364,14 @@ Dirac方程：$(i\gamma^{\mu}\partial_{\mu}-m)\psi=0$
 对于狄拉克旋量，$S_{z}=S^{12}=\frac{\hbar}{2}\begin{pmatrix}\sigma_{z}&0 \\ 0&\sigma_{z}\end{pmatrix}$，$R_{z}(\theta)=\begin{pmatrix}e^{-i\frac{\theta}{2}\sigma_{z}}&0 \\ 0&e^{-i\frac{\theta}{2}\sigma_{z}}\end{pmatrix}$，其中 $e^{-i\frac{\theta}{2}\sigma_{z}}=\cos\left( \frac{\theta}{2} \right)I_{2}-i\sin\left( \frac{\theta}{2} \right)\sigma_{z}$ 
 
 现考虑 $2\pi$ 旋转，$e^{-i\frac{\theta}{2}\sigma_{z}}=\cos\left( \frac{2\pi}{2} \right)I_{2}-i\sin\left( \frac{2\pi}{2} \right)\sigma_{z}=(-1)I_{2}-i(0)\sigma_{z}=-I_{2}$，得
+
 $$
 R_{z}(2\pi)=\begin{pmatrix}
 -I_{2}&0 \\
 0&-I_{2}
 \end{pmatrix}
 =-I_{4}$$
+
 则，$4\pi$ 旋转 $R_{z}(4\pi)=I_{4}$
 
 狄拉克方程的解不仅包含正能量解（对应电子），还包含负能量解。狄拉克最初提出了“狄拉克海”的概念来解释这些负能量态，认为所有负能量态都被填满了。后来，费曼等人重新解释了这些负能量解，认为它们对应于具有正能量但电荷相反的粒子，即反粒子。
@@ -394,9 +396,11 @@ $\gamma^{5}$ 的两个代数性质：
 - 右手旋量：$\gamma^{5}\psi_{R}=\gamma^{5}\frac{1+\gamma^{5}}{2}\psi=\frac{\gamma^{5}+1}{2}\psi=\psi_{R}$ （本征值为 $+1$）
 
 **宇称变换 (P)** 是一种空间反演操作，它将空间坐标 $\mathbf{x}$ 变为 $-\mathbf{x}$，而时间 $t$ 不变。对于狄拉克旋量 $\psi(t,\mathbf{x})$，其宇称变换定义为：
+
 $$
 \psi(t,\mathbf{x})\xrightarrow{P}\psi'(t, \mathbf{x})=\gamma^{0}\psi(t,-\mathbf{x})
 $$
+
 现考察 $\gamma^{5}$ 在宇称变换下的行为。一个算符 $O$ 在宇称变换下的行为由 $POP^{-1}$ 给出。由于 $(\gamma^{0})^{2}=\mathbf{1}$，所以 $P^{-1}=\gamma^{0}$ $\Rightarrow$ $P\gamma^{5}P^{-1}=\gamma^{0}\gamma^{5}\gamma^{0}=\gamma^{0}(-\gamma^{0}\gamma^{5})=-(\gamma^{0})^{2}\gamma^{5}=-\gamma^{5}$
  
 
