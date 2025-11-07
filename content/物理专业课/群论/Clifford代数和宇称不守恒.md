@@ -101,7 +101,7 @@
 # 双线性型
 
 对域 $F$ 上的向量空间 $V$，双线性型是一个映射 $B:V\times V\rightarrow F$，满足
-- $B(c_{1}\mathbf{u_{1}}_+c_{2}\mathbf{u_{2}},\mathbf{v})=c_{1}B(\mathbf{u_{1}},\mathbf{v})+c_{2}B(\mathbf{u_{2}},\mathbf{v})$ 
+- $B(c_{1}\mathbf{u_{1}} +c_{2}\mathbf{u_{2}},\mathbf{v})=c_{1}B(\mathbf{u_{1}},\mathbf{v})+c_{2}B(\mathbf{u_{2}},\mathbf{v})$ 
 - $B(\mathbf{u},c_{1}\mathbf{v_{1}+c_{2}\mathbf{v_{2}}})=c_{1}B(\mathbf{u},\mathbf{v_{1}})+c_{2}B(\mathbf{u},\mathbf{v_{2}})$ 
 
 常用 $B(\mathbf{v},\mathbf{v})$ 定义 $Q(\mathbf{v})$：
