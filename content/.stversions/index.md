@@ -30,7 +30,7 @@ title: index
 
 **基础**：[[边界条件]]
 
-**COMSOL**：[[偏微分方程接口]]
+**COMSOL**：[[偏微分方程接口]] 
 
 **MATLAB**：
 
@@ -44,7 +44,7 @@ title: index
 
 # 物理专业课
 
-**QFT**：[[0. preparation]] [[1. why QFT]] 
+**QFT**：[[0. preparation]] [[1. why QFT]] [[2. free field theory]] 
 
 **群论**：[[1. 群的基本概念]] [[2. 群表示理论]] [[3. 点群与空间群]]
 
