@@ -52,7 +52,7 @@ title: index
 
 **C++**：[[指针]] [[CMake]] 
 
-**服务器**：[[nginx]] [[其他/服务器/docker|docker]] 
+**服务器**：[[nginx]] [[其他/服务器/docker|docker]] [[headscale]]
 
 **编码**：[[字符编码]] [[图像编码]]
 
