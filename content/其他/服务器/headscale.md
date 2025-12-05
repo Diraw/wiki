@@ -28,10 +28,16 @@ docker exec -it headscale headscale preauthkeys create --user <user_id> [--reusa
 docker exec -it headscale headscale preauthkeys list --user <user_id>
 ```
 
+删除密钥：
+
+```shell
+docker exec -it headscale headscale preauthkeys expire --user <user_id> <key>
+```
+
 客户端认证：
 
 ```bash
-tailscale up --login-server=<headscale地址> --authkey=<你的预认证密钥>
+tailscale up --login-server=https://hs.diraw.top --authkey=<你的预认证密钥>
 ```
 
 查看所有设备：
@@ -47,6 +53,12 @@ docker exec -it headscale headscale nodes list --output json
 修改设备tag：
 
 ```shell
-docker exec -it headscale headscale nodes tag --identifier 1 --tags tag:test
+docker exec -it headscale headscale nodes tag --identifier 1 --tags tag:tag1,tag:tag2
+```
+
+删除设备：
+
+```shell
+docker exec -it headscale headscale nodes delete --identifier <id>
 ```
 
