@@ -4,6 +4,8 @@ title: index
 本文档负责记录不适合发在 [主站](https://diraw.top/) 的纯知识搬运内容，主站负责发布过程记录内容
 
 设有wiki分站：[词源文档](https://word.wiki.diraw.top/)
+
+特别设立：[[疑难杂症]] 
 # Python
 
 **pandas**：[[pandas基础|基础]] [[常用方法和属性]]
@@ -58,4 +60,4 @@ title: index
 
 **操作系统**：[[系统分区]] [[文件系统]] 
 
-**其他**：[[正则表达式]] [[obsidian插件]] [[zotero插件]] [[各种小问题]] 
+**其他**：[[正则表达式]] [[obsidian插件]] [[zotero插件]]
