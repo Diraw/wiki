@@ -8,7 +8,9 @@ title: index
 特别设立：[[疑难杂症]] 
 # Python
 
-**pandas**：[[pandas基础|基础]] [[常用方法和属性]]
+**numpy**：[[random和rng]] 
+
+**pandas**：[[pandas基础|基础]] [[常用方法和属性]] 
 
 **matplotlib**：[[matplotlib基础|基础]] 
 
