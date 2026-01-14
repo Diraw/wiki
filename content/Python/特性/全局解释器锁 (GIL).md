@@ -16,7 +16,9 @@ GIL 的存在导致 Python 多线程在处理不同类型任务时表现出**截
 
 ## CPU 密集型任务的并行度为零
 
-对于纯计算任务，多线程不仅无法利用多核加速，反而**因为锁竞争（GIL Context Switching）导致比单线程更慢**。
+在 CPython（默认有 GIL）下，纯 Python 字节码层面的 CPU 密集计算，多线程无法并行，反而**因为锁竞争（GIL Context Switching）导致比单线程更慢**。
+
+如果计算主要发生在会释放 GIL 的 C/Fortran 扩展（如部分 NumPy/BLAS/OpenCV 调用）中，则线程可能在扩展内部实现真正的多核并行；本节讨论的是“Python 字节码主导”的 CPU 密集循环。
 
 **代码：**
 
@@ -214,6 +216,7 @@ Main data: []
 | **数据通信**    | 零拷贝 (直接读写)      | **慢 (需序列化/IPC)**          | **零拷贝 (直接读写)**          |
 | **适用场景**    | IO 密集型          | CPU 密集型                   | **全能 (IO & CPU)**       |
 | **代码复杂度**   | 中 (需注意锁)        | **高 (需处理 IPC/Pickle)**    | 中 (**更需要注意锁！！**)        |
+| **调试难度**    | 低               | 高                         | **很高（竞态）**              |
 
 **结论**：
 
@@ -321,6 +324,10 @@ Python版本: 3.14.2 | GIL: 禁用
 
 No-GIL 的 Python 解释器在内部做了大量工作（比如给引用计数加原子操作、给字典和列表加细粒度锁），但这只能保证**解释器不崩溃**。它**不能**保证你的**业务逻辑**是正确的。
 
+> `dict/list/set` 等内置类型用了**内部锁**，目标是在 Python 层面提供与有 GIL 时“相似”的线程安全体验，但这不等于用户代码逻辑就一定正确。来源：[官方 free-threading HOWTO](https://docs.python.org/3/howto/free-threading-python.html#thread-safety)
+
+<img src="https://img.diraw.top/i/u/2026/01/14/12zgt81.png" width="100%" />
+
 **经典案例：`n += 1` 不是原子的** 无论有没有 GIL，`n += 1` 都要分三步走：
 
 1. 读取 `n` 的值
@@ -344,6 +351,33 @@ def worker():
     with lock:
         n += 1 
 ```
+
+**`dis` 字节码验证**：
+
+```python
+import dis
+def inc():
+    global n
+    n += 1
+
+dis.dis(inc)
+```
+
+**输出**：
+
+```
+  2           0 RESUME                   0
+
+  4           2 LOAD_GLOBAL              0 (n)
+             12 LOAD_CONST               1 (1)
+             14 BINARY_OP               13 (+=)
+             18 STORE_GLOBAL             0 (n)
+             20 RETURN_CONST             0 (None)
+```
+
+**这些步骤不是原子操作**：在有 GIL 的情况下，线程切换可能发生在字节码之间；在 No-GIL 下，不同线程甚至可能在不同 CPU 核上同时执行这些步骤，从而产生写回覆盖。
+
+---
 
 **可以用一段代码测试一下**：
 
@@ -520,3 +554,18 @@ GIL 状态: 已关闭 (No-GIL)
 - 如果锁加得太多、粒度太粗，线程之间就会频繁争抢锁。
 - **结果：** 你的多核 CPU 实际上大部分时间都在等待锁释放，性能可能还不如单线程。
 - **策略：** 在 No-GIL 时代，你需要更高级的并发模型，比如尽量使用**无锁数据结构**（虽然 Python 里很少），或者使用 `queue.Queue` 这种线程安全的队列来通信，而不是共享全局变量（虽然安全，但是速度会下降很多）。
+
+# 补充
+
+## 单线程性能回退（Trade-off）
+
+PEP 703 明确提到，Free-threaded Python 在**单线程**模式下，性能比标准版 Python 要慢。
+
+- **原因**：为了支持细粒度锁和引用计数的线程安全，解释器内部增加了很多开销（Overhead）。它牺牲了单线程的极致速度来换取多核的扩展性。
+
+> free-threaded 与普通 build 的**单线程性能差距是平台相关、点对点的**，并且已经被优化到“多数平台 <10%”（比如 Ubuntu/Windows 大约 7–8%，macOS 差异更小；早期 3.13 时差距更大）来源：[PSF官方博客](https://pyfound.blogspot.com/2025/06/python-language-summit-2025-state-of-free-threaded-python.html)
+
+<img src="https://img.diraw.top/i/u/2026/01/14/12wi5t3.png" width="100%" />
+
+
+
