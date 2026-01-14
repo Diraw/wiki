@@ -8,6 +8,8 @@ title: index
 特别设立：[[疑难杂症]] 
 # Python
 
+**特性**：[[全局解释器锁 (GIL)]] 
+
 **numpy**：[[random和rng]] 
 
 **pandas**：[[pandas基础|基础]] [[常用方法和属性]] 
@@ -50,7 +52,7 @@ title: index
 
 **QFT**：[[0. preparation]] [[1. why QFT]] [[2. free field theory]] 
 
-**群论**：[[1. 群的基本概念]] [[2. 群表示理论]] [[3. 点群与空间群]] [[Clifford代数和宇称不守恒|课程汇报：Clifford代数和宇称不守恒]]
+**群论**：[[1. 群的基本概念]] [[2. 群表示理论]] [[3. 点群与空间群]] [[Clifford代数和宇称不守恒|课程汇报：Clifford代数和宇称不守恒]] 
 
 # 其他
 
